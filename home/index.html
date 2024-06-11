@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>앞서가는 친구들의 양현 영어 공부방</title>
+    <link rel="stylesheet" href="../style/default.css">
+    <link rel="stylesheet" href="../style/front.css"><!--front body section-->
+</head>
+<body>
+ <header>
+    <div><a href="index.html"><img class="logo" src="../img/logo.png"></a></div>
+ </header>
+ <nav>
+  <div></div>
+    <ul class="mainMenu">
+        <li><a href="speaking.html">기초영어회화</a></li>
+        <li>유아</li>
+        <li>초등저학년</li>
+        <li>초등고학년</li>
+        <li>중등</li>
+    </ul>
+  </div>
+ </nav>
+ <section>
+    <figure><div class="topadwrap">
+      <img class="topad" src="../img/topad.png"></div>
+    </figure>
+
+    <div class="slider">
+      <div class="slides">
+        <img src="../img/teacher1.png">
+        <img src="../img/teacher2.png">
+        <img src="../img/teacher3.png">
+        <img src="../img/teacher4.png">
+        <img src="../img/teacher5.png">
+        <img src="../img/teacher1.png">
+        <img src="../img/teacher2.png">
+        <img src="../img/teacher3.png">
+      </div>
+
+  <button class="prevBtn"><i class="fa-light fa-arrow-right fa-flip-horizontal" style="color: #212121;"></i></button>
+  <button class="nextBtn"><i class="fa-light fa-arrow-right" style="color: #212121;"></i></button>
+    </div>
+    <!--tab menu start-->
+    <div class="tabwrap">
+<div class="tabmenu out-tabmenu">
+  <ul>
+    <li id="tab1" class="btnCon"> 
+      <input type="radio" checked name="tabmenu" id="tabmenu1">
+      <label for="tabmenu1">무료수업</label>
+      <div class="tabCon" >
+        <iframe width="750" height="430" src="https://www.youtube.com/embed/MzqIHQcnujE?si=9SQTZdAZlYC6NjST" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      
+    </li>
+    <li id="tab2" class="btnCon"><input type="radio" name="tabmenu" id="tabmenu2">
+      <label for="tabmenu2">공지사항</label>
+      <div class="tabCon" >It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
+      
+    </li>    
+    <li id="tab3" class="btnCon"><input type="radio" name="tabmenu" id="tabmenu3">
+      <label for="tabmenu3">본원소개</label>
+      <div class="tabCon" >There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</div>
+      
+    </li>
+  </ul>
+</div>
+</div>
+        <!--tab menu end-->
+        <!--slider-->
+        <script>
+         const slider = document.querySelector('.slider');
+        const slides = document.querySelector('.slides');
+        const prevBtn = document.querySelector('.prevBtn');
+        const nextBtn = document.querySelector('.nextBtn');
+        const slideCount = document.querySelectorAll('.slides img').length; // 이미지 수
+        const slideWidth = 200; // 이미지의 너비
+        let slideIndex = 0;
+        const slideInterval = 3000; // 이미지 변경 간격 (ms)
+        let autoSlide;
+
+        function startAutoSlide() {
+          autoSlide = setInterval(() => {
+            nextSlide();
+          }, slideInterval);
+        }
+
+        function nextSlide() {
+          slideIndex++;
+          updateSlide();
+        }
+
+        function prevSlide() {
+          slideIndex--;
+          updateSlide();
+        }
+
+        function updateSlide() {
+          if (slideIndex === slideCount) { // 마지막 이미지 뒤에 첫 번째 이미지로 이동
+            slides.style.transition = 'none';
+            slideIndex = 0;
+            slides.style.transform = `translateX(0)`;
+            setTimeout(() => {
+              slides.style.transition = 'transform 0.5s ease-in-out';
+              slides.style.transform = `translateX(-${slideWidth}px)`;
+            }, 50);
+          } else {
+            slides.style.transition = 'transform 0.5s ease-in-out';
+            slides.style.transform = `translateX(-${slideIndex * slideWidth}px)`; // 이미지의 너비 * 표시되는 이미지 수
+          }
+        }
+
+        // 이전 버튼 클릭 시
+        prevBtn.addEventListener('click', () => {
+          stopAutoSlide();
+          prevSlide();
+        });
+
+        // 다음 버튼 클릭 시
+        nextBtn.addEventListener('click', () => {
+          stopAutoSlide();
+          nextSlide();
+        });
+
+        // 자동 슬라이드 시작
+        startAutoSlide();
+
+        // 마우스가 슬라이더 위에 있을 때 자동 슬라이드 중지
+        slider.addEventListener('mouseenter', stopAutoSlide);
+
+        // 마우스가 슬라이더를 벗어날 때 자동 슬라이드 다시 시작
+        slider.addEventListener('mouseleave', startAutoSlide);
+        </script>
+        <!--slider ends -->
+ </section>
+ <aside>
+  <div class="sidead">
+    <img src="../img/sidead.png">
+  </div>
+ </aside>
+ <footer>footer에 넣을 내용은 정말 많지만 지금 당장은 갈길이 멈으로 천천히 하겠음 
+
+ </footer>
+</body>
+</html>
